@@ -3,16 +3,27 @@ int main(void)
 {	
 	char topx = 0x40;
 	char undx = 0x00;
-	char x,*lifo,Obj[6],i,moji;
+	char *fifo,asc[6] = {0x0f, 0x0c, 0x0c, 0x05, 0x08};
+	char *lifo,obj[6];
+	char x,i;
 	
-	lifo = &Obj[0];
-	for(i = 1; i < 27; i++){
-		x = (undx + i) | topx;
-		if(x == (topx + 8) || x == (topx + 5) || x == (topx + 12) || x == (topx + 12) || x == (topx + 15)){
-				*lifo = x;
+	lifo = &obj[0];
+	fifo = &asc[0];
+
+	while(*fifo != '\0'){
+		for(i = 1; i < 27; i++){
+			x = (undx + i) | topx;
+			if(x == (topx | *fifo)){
+				*lifo = x;	
 				lifo++;
+				fifo++;
+			}
 		}
 	}
-	printf("%s\n", &Obj[0]);
+	for(i = 0; i < sizeof(obj); i++){
+		printf("%c", *lifo);
+		lifo--;
+	}
+	printf("\n");
 	return 0;
 }
