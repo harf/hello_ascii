@@ -7,8 +7,8 @@ int main(void)
 	char *lifo,obj[6];	//NULLが最初にきてしまうよ。なんてこったい\(^^)/
 	char x,i,j;
 	
-	lifo = &obj[0];
 	fifo = &asc[0];
+	lifo = &obj[1];
 
 	for(j = 0; j < sizeof(asc); j++){
 		for(i = 1; i < 27; i++){
@@ -21,9 +21,9 @@ int main(void)
 		}
 	fifo++;
 	}
-	for(i = 0; i < sizeof(obj); i++){
-		printf("%c", *lifo);
+	for(i = 1; i < sizeof(obj); i++){
 		lifo--;
+		printf("%c", *lifo);
 	}
 	printf("\n");
 	return 0;
