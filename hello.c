@@ -23,8 +23,8 @@ int main(void)
 	}
 	for(i = 0; i < sizeof(obj); i++){
 		lifo--;
-		printf("%c", *lifo);
+		putchar(*lifo);
 	}
-	printf("\n");
+	putchar('\n');
 	return 0;
 }
